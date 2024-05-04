@@ -11,6 +11,8 @@
           <%= link_to "編集する", edit_prototype_path(@prototype.id), class: :prototype__btn %>
           <%= link_to "削除する", prototype_path(@prototype.id), data: { turbo_method: :delete }, class: :prototype__btn %>
         </div>
+      <% else %>
+       
       <% end %>
       <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
       <div class="prototype__image">
@@ -49,7 +51,7 @@
           <% @comments.each do |comment| %>
             <li class="comments_list">
               <%= comment.text %>
-              <%= link_to comment.user.name, "/users/#{@prototype.user.id}", class: :comment_user %>
+              <%= link_to comment.user.name, "/users/#{comment.user.id}", class: :comment_user %>
             </li>
           <% end %>
           <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
